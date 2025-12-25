@@ -27,7 +27,6 @@ sudo apt update
 sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0
 ```
 
-> توجه: روی ویندوز یا macOS نصب PyGObject نیاز به مراحل جداگانه دارد.
 ## نصب فونت Estedad
 
 برای نمایش صحیح فارسی، فونت **Estedad** را نصب کنید.
@@ -62,6 +61,7 @@ python3 main.py
 * تغییر رنگ‌ها و استایل برای **تم Night Owl بهتر**
 * اضافه کردن **Scroll در TextView** برای آیه‌های طولانی
 * اضافه کردن **لیست آیات محبوب یا مورد علاقه**
+
 
 
 
