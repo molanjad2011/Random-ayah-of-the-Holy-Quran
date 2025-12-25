@@ -1,5 +1,10 @@
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: 'Scheherazade', 'Amiri', serif;
     color: #f0f4f8;
     display: flex;
@@ -10,6 +15,7 @@ body {
     background-color: #000000;
     line-height: 1.6;
     padding: 20px;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -17,7 +23,7 @@ h1 {
     margin: 40px 0 20px 0;
     text-align: center;
     color: #ffffff;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
     animation: fadeInDown 1s ease;
 }
 
@@ -28,27 +34,28 @@ h1 {
 
 #ayah-container {
     background-color: #161616;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 20px;
     padding: 25px;
-    width: 90%;
+    width: 100%;
     max-width: 800px;
-    min-height: 500px;
+    min-height: 200px;
     overflow-y: auto;
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 2;
     text-align: right;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    transition: transform 0.4s, box-shadow 0.4s;
-    animation: fadeIn 1s ease;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.6);
     border-left: 4px solid #82aaff;
     border-right: 4px solid #82aaff;
-
+    transition: transform 0.4s, box-shadow 0.4s, border-color 0.6s, color 0.4s;
+    animation: fadeIn 1s ease;
+    position: relative;
 }
 
 #ayah-container:hover {
     transform: scale(1.02);
     box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+    color: #82aaff;
 }
 
 @keyframes fadeIn {
@@ -66,7 +73,7 @@ button {
     cursor: pointer;
     border: none;
     margin: 25px 0;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
@@ -77,15 +84,7 @@ button:hover {
 }
 
 @media (max-width: 600px) {
-    h1 {
-        font-size: 2rem;
-    }
-    #ayah-container {
-        font-size: 1.1rem;
-        padding: 15px;
-    }
-    button {
-        font-size: 1rem;
-        padding: 10px 20px;
-    }
+    h1 { font-size: 2rem; }
+    #ayah-container { font-size: 1.2rem; padding: 15px; }
+    button { font-size: 1rem; padding: 10px 20px; }
 }
