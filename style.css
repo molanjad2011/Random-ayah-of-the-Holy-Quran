@@ -1,25 +1,26 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+box-sizing: border-box;
+margin: 0;
+padding: 0;
 }
 
 body {
-    font-family: 'Scheherazade', 'Amiri', serif;
+    font-family: 'Scheherazade', 'Amiri', 'Vazir', serif;
     color: #f0f4f8;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
     justify-content: flex-start;
-    background-color: #000000;
+    background: linear-gradient(135deg, #000000, #1a1a1a);
     line-height: 1.6;
     padding: 20px;
     overflow-x: hidden;
+    transition: all 0.5s ease;
 }
 
 h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin: 40px 0 20px 0;
     text-align: center;
     color: #ffffff;
@@ -33,29 +34,27 @@ h1 {
 }
 
 #ayah-container {
-    background-color: #161616;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    padding: 25px;
-    width: 100%;
-    max-width: 800px;
-    min-height: 200px;
-    overflow-y: auto;
-    font-size: 2rem;
-    line-height: 2;
-    text-align: right;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.6);
-    border-left: 4px solid #82aaff;
-    border-right: 4px solid #82aaff;
-    transition: transform 0.4s, box-shadow 0.4s, border-color 0.6s, color 0.4s;
-    animation: fadeIn 1s ease;
-    position: relative;
+background: linear-gradient(145deg, #1c1c1c, #161616);
+border-radius: 20px;
+margin-bottom: 20px;
+padding: 25px;
+width: 100%;
+max-width: 800px;
+min-height: 200px;
+overflow-y: auto;
+font-size: 2rem;
+line-height: 2.2;
+text-align: right;
+box-shadow: 0 10px 35px rgba(0,0,0,0.6);
+border-left: 6px solid #82aaff;
+border-right: 6px solid #82aaff;
+transition: all 0.4s ease;
+animation: fadeIn 1s ease;
 }
 
 #ayah-container:hover {
-    transform: scale(1.02);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-    color: #82aaff;
+transform: scale(1.03);
+box-shadow: 0 15px 40px rgba(0,0,0,0.7);
 }
 
 @keyframes fadeIn {
@@ -66,25 +65,59 @@ h1 {
 button {
     background: linear-gradient(45deg, #7fdbca, #50bfa0);
     color: #011627;
-    border-radius: 15px;
-    padding: 12px 25px;
+    border-radius: 20px;
+    padding: 12px 30px;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     border: none;
     margin: 25px 0;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
 }
 
 button:hover {
     background: linear-gradient(45deg, #50bfa0, #2e9d84);
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.arabic {
+    font-size: 2.2rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+.translation {
+    color: #82aaff;
+    font-size: 1.6rem;
+    margin-top: 10px;
+}
+
+.reason {
+    color: #f1fa8c;
+    font-size: 1.4rem;
+    margin-top: 10px;
 }
 
 @media (max-width: 600px) {
-    h1 { font-size: 2rem; }
+    h1 { font-size: 2.2rem; }
     #ayah-container { font-size: 1.2rem; padding: 15px; }
     button { font-size: 1rem; padding: 10px 20px; }
 }
+
+body.day {
+    background: linear-gradient(135deg, #f5f5f5, #eaeaea);
+    color: #333;
+}
+
+body.day #ayah-container {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    color: #000;
+    border-left: 6px solid #50bfa0;
+    border-right: 6px solid #50bfa0;
+}
+
+body.day .arabic { color: #000; text-shadow: none; }
+body.day .translation { color: #0077cc; }
+body.day .reason { color: #cc9900; }
