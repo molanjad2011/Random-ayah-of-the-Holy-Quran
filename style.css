@@ -1,15 +1,21 @@
+/* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Vazir&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
+/* ==========================
+   Root Variables
+========================== */
 :root {
     --bg-color: #fdfdfd;
     --text-color: #111;
     --card-bg: rgba(255, 255, 255, 0.7);
     --card-border: #8bbf8b;
+
     --button-next: #8bbf8b;
     --button-fav: #ffa94d;
     --button-share: #5aa5f2;
+
     --button-hover-next: #70a070;
     --button-hover-fav: #e68a00;
     --button-hover-share: #3d8ee0;
@@ -20,14 +26,19 @@ body.dark-mode {
     --text-color: #d6deeb;
     --card-bg: rgba(20, 30, 50, 0.7);
     --card-border: #82aaff;
+
     --button-next: #82aaff;
     --button-fav: #c792ea;
     --button-share: #ff7f50;
+
     --button-hover-next: #6091e0;
     --button-hover-fav: #a156d1;
     --button-hover-share: #ff6347;
 }
 
+/* ==========================
+   Reset & Base
+========================== */
 * {
     margin: 0;
     padding: 0;
@@ -41,17 +52,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
     justify-content: flex-start;
+    min-height: 100vh;
     line-height: 1.8;
     padding: 20px;
     overflow-x: hidden;
 
-    background-image: url('backGround.jpg');
+    /* background-image: url('backGround.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; */
     position: relative;
 }
 
@@ -65,94 +76,17 @@ body::before {
     z-index: -1;
 }
 
-/* Header */
+/* ==========================
+   Header
+========================== */
 h1 {
+    font-family: 'Amiri', serif; /* or 'Scheherazade' */
     font-size: 2.5rem;
-    margin: 30px 0 20px;
-    text-align: center;
     color: var(--text-color);
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-    animation: fadeIn 1.2s ease forwards;
-}
-
-#ayah-container {
-background: var(--card-bg);
-backdrop-filter: blur(6px);
-border-radius: 12px;
-margin-bottom: 20px;
-padding: 25px;
-width: 100%;
-max-width: 700px;
-min-height: 180px;
-font-size: 1.8rem;
-line-height: 2.2;
-text-align: right;
-border-left: 5px solid var(--card-border);
-border-right: 5px solid var(--card-border);
-box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-opacity: 0;
-transform: translateY(20px);
-animation: fadeIn 1s ease forwards;
-}
-
-.arabic {
-    font-family: 'Scheherazade', 'Amiri', serif;
-    font-size: 2rem;
-    color: var(--text-color);
-    line-height: 2.4;
-    margin-bottom: 10px;
-}
-
-.translation {
-    font-family: 'Vazir', sans-serif;
-    color: #555;
-    font-size: 1.4rem;
-    margin-top: 8px;
-}
-
-#button-container {
-display: flex;
-justify-content: center;
-gap: 5px;
-margin-bottom: 20px;
-}
-
-#button-container button {
-flex: none;
-padding: 10px 20px;
-border-radius: 12px;
-font-weight: bold;
-cursor: pointer;
-border: none;
-transition: all 0.3s ease;
-}
-
-#next-btn {
-background: var(--button-next);
-}
-
-#next-btn:hover { background: var(--button-hover-next); transform: translateY(-2px); }
-
-#favorite-btn {
-background: var(--button-fav);
-}
-
-#favorite-btn:hover { background: var(--button-hover-fav); transform: translateY(-2px); }
-
-#share-btn {
-background: var(--button-share);
-}
-
-#share-btn:hover { background: var(--button-hover-share); transform: translateY(-2px); }
-
-#favorites p {
-background: rgba(255,255,255,0.6);
-border-radius: 8px;
-padding: 6px 10px;
-margin-bottom: 6px;
-color: var(--text-color);
-backdrop-filter: blur(4px);
-animation: fadeIn 0.8s ease forwards;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 1.5s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -162,8 +96,163 @@ animation: fadeIn 0.8s ease forwards;
     }
 }
 
+
+/* ==========================
+   Ayah Container
+========================== */
+#ayah-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 25px;
+    width: 100%;
+    max-width: 700px;
+    min-height: 180px;
+    font-size: 1.8rem;
+    line-height: 2.2;
+    text-align: right;
+    border-left: 5px solid var(--card-border);
+    border-right: 5px solid var(--card-border);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease forwards;
+
+}
+#clock {
+    position: fixed;      /* Make it float above content */
+    top: 20px;            /* Distance from the top */
+    left: 20px;           /* Distance from the left */
+
+    font-family: 'Vazir', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    background: var(--card-bg);
+    padding: 8px 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    border: 2px solid var(--card-border);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 999;         /* Make sure it’s above other elements */
+}
+
+
+.arabic {
+    font-family: 'Scheherazade', 'Amiri', serif;
+    font-size: 2rem;
+    color: #222;
+    text-shadow: 0 0 8px rgba(255, 200, 0, 0.7);
+    transition: text-shadow 0.5s ease, color 0.5s ease;
+}
+
+.arabic:hover {
+    color: #f39c12;
+    text-shadow: 0 0 12px rgba(255, 200, 0, 1);
+}
+.gradient-text {
+    font-family: 'Vazir', sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(45deg, #82aaff, #c792ea, #ff7f50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 3s infinite linear;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+
+.translation {
+    font-family: 'Vazir', sans-serif;
+    font-size: 1.4rem;
+    color: #555;
+    margin-top: 8px;
+}
+
+/* ==========================
+   Buttons
+========================== */
+#button-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+#button-container button {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+/* Button Colors */
+#next-btn { background: var(--button-next); }
+#next-btn:hover { background: var(--button-hover-next); transform: translateY(-2px); }
+
+#favorite-btn { background: var(--button-fav); }
+#favorite-btn:hover { background: var(--button-hover-fav); transform: translateY(-2px); }
+
+#share-btn { background: var(--button-share); }
+#share-btn:hover { background: var(--button-hover-share); transform: translateY(-2px); }
+
+/* ==========================
+   Favorites
+========================== */
+#favorites p {
+    background: rgba(255,255,255,0.6);
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    color: var(--text-color);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* ==========================
+   Animations
+========================== */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==========================
+   Responsive
+========================== */
 @media (max-width: 600px) {
     h1 { font-size: 2rem; }
     #ayah-container { font-size: 1.4rem; padding: 15px; }
     #button-container button { font-size: 0.9rem; padding: 8px 15px; }
 }
+
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--card-bg);
+    color: var(--text-color);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+#theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
