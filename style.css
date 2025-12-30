@@ -1,123 +1,92 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* فونت‌های اصلی */
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazir&display=swap'); /* فارسی */
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');  /* نستعلیق-like برای عربی */
 
 body {
-    font-family: 'Scheherazade', 'Amiri', 'Vazir', serif;
-    color: #d6deeb;
+    font-family: 'Vazir', 'Amiri', sans-serif;
+    color: #111;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
     justify-content: flex-start;
-    background: linear-gradient(135deg, #011627, #0d1b2a);
-    line-height: 1.6;
+    background: #fdfdfd;
+    line-height: 1.8;
     padding: 20px;
-    overflow-x: hidden;
-    transition: all 0.5s ease;
 }
 
+/* Header */
 h1 {
-    font-size: 3rem;
-    margin: 40px 0 20px 0;
+    font-size: 2.5rem;
+    margin: 30px 0 20px 0;
     text-align: center;
-    color: #ffffff;
-    text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
-    animation: fadeInDown 1s ease;
+    color: #333;
 }
 
-@keyframes fadeInDown {
-    0% {opacity: 0; transform: translateY(-30px);}
-    100% {opacity: 1; transform: translateY(0);}
-}
-
+/* Container for Ayah */
 #ayah-container {
-    background: linear-gradient(145deg, #011627, #0a192f);
-    border-radius: 20px;
+    background: #ffffff;
+    border-radius: 12px;
     margin-bottom: 20px;
     padding: 25px;
     width: 100%;
-    max-width: 800px;
-    min-height: 200px;
-    overflow-y: auto;
-    font-size: 2rem;
+    max-width: 700px;
+    min-height: 180px;
+    font-size: 1.8rem;
     line-height: 2.2;
     text-align: right;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.6);
-    border-left: 6px solid #82aaff;
-    border-right: 6px solid #82aaff;
-    transition: all 0.4s ease;
-    animation: fadeIn 1s ease;
+    border-left: 5px solid #8bbf8b;
+    border-right: 5px solid #8bbf8b;
 }
 
-#ayah-container:hover {
-    transform: scale(1.03);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+/* Arabic text با فونت نستعلیق */
+.arabic {
+    font-family: 'Scheherazade', 'Amiri', serif;
+    font-size: 2rem;
+    color: #111;
+    line-height: 2.4;
+    margin-bottom: 10px;
 }
 
-@keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+/* Translation text */
+.translation {
+    font-family: 'Vazir', sans-serif;
+    color: #555;
+    font-size: 1.4rem;
+    margin-top: 8px;
 }
 
+/* Buttons */
 button {
-    background: linear-gradient(45deg, #7fdbca, #50bfa0);
-    color: #011627;
-    border-radius: 20px;
-    padding: 12px 30px;
+    background: #8bbf8b;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 10px 25px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     border: none;
-    margin: 25px 0;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
+    margin: 15px 10px;
+    transition: background 0.3s ease;
 }
 
 button:hover {
-    background: linear-gradient(45deg, #50bfa0, #2e9d84);
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    background: #70a070;
 }
 
-.arabic {
-    font-size: 2.2rem;
-    color: #ffffff;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+/* Favorites section */
+#favorites p {
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+    color: #333;
 }
 
-.translation {
-    color: #82aaff;
-    font-size: 1.6rem;
-    margin-top: 10px;
-}
-
-.reason {
-    color: #f1fa8c;
-    font-size: 1.4rem;
-    margin-top: 10px;
-}
-
+/* Responsive */
 @media (max-width: 600px) {
-    h1 { font-size: 2.2rem; }
-    #ayah-container { font-size: 1.2rem; padding: 15px; }
-    button { font-size: 1rem; padding: 10px 20px; }
+    h1 { font-size: 2rem; }
+    #ayah-container { font-size: 1.4rem; padding: 15px; }
+    button { font-size: 0.9rem; padding: 8px 20px; }
 }
-
-body.day {
-    background: linear-gradient(135deg, #d6deeb, #e0e7f1);
-    color: #011627;
-}
-
-body.day #ayah-container {
-    background: linear-gradient(145deg, #f0f4f8, #e2e8f0);
-    color: #011627;
-    border-left: 6px solid #50bfa0;
-    border-right: 6px solid #50bfa0;
-}
-
-body.day .arabic { color: #011627; text-shadow: none; }
-body.day .translation { color: #0077cc; }
-body.day .reason { color: #cc9900; }
