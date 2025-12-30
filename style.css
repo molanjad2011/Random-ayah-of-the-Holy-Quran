@@ -1,30 +1,38 @@
-/* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Scheherazade&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Vazir&display=swap');
+/* ============================= */
+/*          فونت‌ها              */
+/* ============================= */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
-/* ==========================
-   Root Variables
-========================== */
+/* ============================= */
+/*        متغیرهای اصلی           */
+/* ============================= */
 :root {
-    --bg-color: #fdfdfd;
+    /* رنگ‌بندی عمومی */
+    --bg-color: #f7f6f3;
     --text-color: #111;
-    --card-bg: rgba(255, 255, 255, 0.7);
+
+    /* کارت‌ها */
+    --card-bg: rgba(255, 255, 255, 0.8);
     --card-border: #8bbf8b;
 
+    /* دکمه‌ها */
     --button-next: #8bbf8b;
     --button-fav: #ffa94d;
     --button-share: #5aa5f2;
 
+    /* حالت هاور دکمه‌ها */
     --button-hover-next: #70a070;
     --button-hover-fav: #e68a00;
     --button-hover-share: #3d8ee0;
 }
 
+/* حالت شب */
 body.dark-mode {
     --bg-color: #0d1b2a;
     --text-color: #d6deeb;
-    --card-bg: rgba(20, 30, 50, 0.7);
+
+    --card-bg: rgba(20, 30, 50, 0.85);
     --card-border: #82aaff;
 
     --button-next: #82aaff;
@@ -36,9 +44,9 @@ body.dark-mode {
     --button-hover-share: #ff6347;
 }
 
-/* ==========================
-   Reset & Base
-========================== */
+/* ============================= */
+/*       تنظیمات پایه             */
+/* ============================= */
 * {
     margin: 0;
     padding: 0;
@@ -46,143 +54,116 @@ body.dark-mode {
 }
 
 body {
-    font-family: 'Vazir', 'Amiri', sans-serif;
+    font-family: 'Vazirmatn', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     min-height: 100vh;
+    justify-content: flex-start;
     line-height: 1.8;
     padding: 20px;
-    overflow-x: hidden;
-
-    /* background-image: url('backGround.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; */
-    position: relative;
+    transition: all 0.5s ease;
 }
 
-body::before {
-    content: '';
+/* ============================= */
+/*         ساعت نرم               */
+/* ============================= */
+#clock-soft {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(12px);
-    z-index: -1;
+    top: 12px;
+    left: 12px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 14px;
+    font-size: 18px;
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-weight: bold;
+    user-select: none;
 }
 
-/* ==========================
-   Header
-========================== */
+/* ============================= */
+/*       حالت شب/روز             */
+/* ============================= */
+#mode-container {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ============================= */
+/*           عنوان                */
+/* ============================= */
 h1 {
-    font-family: 'Amiri', serif; /* or 'Scheherazade' */
     font-size: 2.5rem;
+    margin: 30px 0 20px;
+    text-align: center;
     color: var(--text-color);
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeIn 1.5s ease forwards;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* ============================= */
+/*       انتخابگر سوره            */
+/* ============================= */
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
 }
 
-
-/* ==========================
-   Ayah Container
-========================== */
-#ayah-container {
+#surah-select {
+    width: 220px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
     background: var(--card-bg);
-    backdrop-filter: blur(6px);
-    border-radius: 12px;
-    margin-bottom: 20px;
-    padding: 25px;
-    width: 100%;
+    margin: 10px 0 20px;
+    font-size: 15px;
+    backdrop-filter: blur(4px);
+}
+
+/* ============================= */
+/*          کارت آیه              */
+/* ============================= */
+#ayah-container {
+    width: 90%;
     max-width: 700px;
     min-height: 180px;
-    font-size: 1.8rem;
-    line-height: 2.2;
-    text-align: right;
+    padding: 25px;
+    margin-bottom: 20px;
+    background: var(--card-bg);
+    border-radius: 14px;
     border-left: 5px solid var(--card-border);
     border-right: 5px solid var(--card-border);
     box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s ease forwards;
-
-}
-#clock {
-    position: fixed;      /* Make it float above content */
-    top: 20px;            /* Distance from the top */
-    left: 20px;           /* Distance from the left */
-
-    font-family: 'Vazir', sans-serif;
-    font-size: 1.5rem;
-    color: var(--text-color);
-    background: var(--card-bg);
-    padding: 8px 15px;
-    border-radius: 12px;
+    font-family: 'Amiri', serif;
+    font-size: 1.8rem;
+    line-height: 2.2;
+    text-align: right;
     backdrop-filter: blur(6px);
-    border: 2px solid var(--card-border);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    z-index: 999;         /* Make sure it’s above other elements */
+    transition: all 0.3s ease;
 }
 
-
-.arabic {
-    font-family: 'Scheherazade', 'Amiri', serif;
-    font-size: 2rem;
-    color: #222;
-    text-shadow: 0 0 8px rgba(255, 200, 0, 0.7);
-    transition: text-shadow 0.5s ease, color 0.5s ease;
-}
-
-.arabic:hover {
-    color: #f39c12;
-    text-shadow: 0 0 12px rgba(255, 200, 0, 1);
-}
-.gradient-text {
-    font-family: 'Vazir', sans-serif;
-    font-size: 2rem;
-    background: linear-gradient(45deg, #82aaff, #c792ea, #ff7f50);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientMove 3s infinite linear;
-}
-
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-
-.translation {
-    font-family: 'Vazir', sans-serif;
-    font-size: 1.4rem;
-    color: #555;
-    margin-top: 8px;
-}
-
-/* ==========================
-   Buttons
-========================== */
+/* ============================= */
+/*             دکمه‌ها            */
+/* ============================= */
 #button-container {
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: 8px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 #button-container button {
+    flex: none;
     padding: 10px 20px;
     border-radius: 12px;
     font-weight: bold;
@@ -191,68 +172,55 @@ h1 {
     transition: all 0.3s ease;
 }
 
-/* Button Colors */
+/* دکمه بعدی */
 #next-btn { background: var(--button-next); }
-#next-btn:hover { background: var(--button-hover-next); transform: translateY(-2px); }
+#next-btn:hover {
+    background: var(--button-hover-next);
+    transform: translateY(-2px) scale(1.05);
+}
 
+/* دکمه علاقه‌مندی */
 #favorite-btn { background: var(--button-fav); }
-#favorite-btn:hover { background: var(--button-hover-fav); transform: translateY(-2px); }
+#favorite-btn:hover {
+    background: var(--button-hover-fav);
+    transform: translateY(-2px) scale(1.05);
+}
 
+/* دکمه اشتراک */
 #share-btn { background: var(--button-share); }
-#share-btn:hover { background: var(--button-hover-share); transform: translateY(-2px); }
+#share-btn:hover {
+    background: var(--button-hover-share);
+    transform: translateY(-2px) scale(1.05);
+}
 
-/* ==========================
-   Favorites
-========================== */
+/* ============================= */
+/*         علاقه‌مندی‌ها          */
+/* ============================= */
+#favorites {
+    width: 90%;
+    max-width: 700px;
+    padding: 14px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    font-size: 15px;
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(4px);
+    font-family: 'Vazirmatn', sans-serif;
+}
+
 #favorites p {
-    background: rgba(255,255,255,0.6);
-    border-radius: 8px;
     padding: 6px 10px;
     margin-bottom: 6px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.6);
     color: var(--text-color);
-    backdrop-filter: blur(4px);
-    animation: fadeIn 0.8s ease forwards;
 }
 
-/* ==========================
-   Animations
-========================== */
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* ==========================
-   Responsive
-========================== */
+/* ============================= */
+/*         حالت موبایل           */
+/* ============================= */
 @media (max-width: 600px) {
     h1 { font-size: 2rem; }
     #ayah-container { font-size: 1.4rem; padding: 15px; }
     #button-container button { font-size: 0.9rem; padding: 8px 15px; }
 }
-
-#theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 8px 12px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background: var(--card-bg);
-    color: var(--text-color);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-#theme-toggle:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-}
-
