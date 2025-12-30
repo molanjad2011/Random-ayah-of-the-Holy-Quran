@@ -1,14 +1,13 @@
 /* ============================= */
-/*          تنظیمات و متغیرها     */
+/*       تنظیمات و متغیرها       */
 /* ============================= */
 const EDITION = "quran-simple";
-
 let displayedAyahs = [];
 let favorites = [];
 let currentAyah = null;
 
 /* ============================= */
-/*          داده‌ها               */
+/*           داده‌ها             */
 /* ============================= */
 const surahNames = [
     "", "الفاتحه", "البقره", "آل عمران", "النساء", "المائده", "الأنعام", "الأعراف",
@@ -48,16 +47,18 @@ const suraVerses = {
 };
 
 /* ============================= */
-/*        عناصر DOM               */
+/*           عناصر DOM           */
 /* ============================= */
 const ayahContainer = document.getElementById("ayah-container");
 const nextBtn = document.getElementById("next-btn");
 const favoriteBtn = document.getElementById("favorite-btn");
 const shareBtn = document.getElementById("share-btn");
 const modeSwitch = document.getElementById("mode-switch");
+const infoBox = document.getElementById('info-box');
+const closeBtn = document.getElementById('close-info');
 
 /* ============================= */
-/*       توابع کمکی              */
+/*         توابع کمکی           */
 /* ============================= */
 function populateSurahSelect() {
     const select = document.getElementById("surah-select");
@@ -113,7 +114,7 @@ async function loadAyah() {
 }
 
 /* ============================= */
-/*        علاقه‌مندی‌ها           */
+/*         علاقه‌مندی‌ها          */
 /* ============================= */
 function addToFavorites() {
     if (currentAyah && !favorites.includes(`${currentAyah.surah}:${currentAyah.number}`)) {
@@ -128,7 +129,7 @@ function updateFavorites() {
 }
 
 /* ============================= */
-/*          ساعت نرم              */
+/*          ساعت نرم             */
 /* ============================= */
 function updateSoftClock() {
     const now = new Date();
@@ -139,7 +140,7 @@ setInterval(updateSoftClock, 1000);
 updateSoftClock();
 
 /* ============================= */
-/*         دکمه‌ها و رویدادها     */
+/*        دکمه‌ها و رویدادها      */
 /* ============================= */
 nextBtn.addEventListener("click", loadAyah);
 favoriteBtn.addEventListener("click", addToFavorites);
@@ -165,27 +166,27 @@ function autoDarkMode() {
 }
 autoDarkMode();
 setInterval(autoDarkMode, 60000);
-  const infoBox = document.getElementById('info-box');
-  const closeBtn = document.getElementById('close-info');
 
-  // بسته شدن با دکمه
-  closeBtn.addEventListener('click', () => {
+/* ============================= */
+/*         پنجره اطلاعات          */
+/* ============================= */
+closeBtn.addEventListener('click', () => {
     infoBox.style.transition = 'opacity 0.5s';
     infoBox.style.opacity = '0';
     setTimeout(() => infoBox.remove(), 500);
-  });
+});
 
-  // نمایش خودکار 5 ثانیه بعد
-  setTimeout(() => {
+// نمایش خودکار 5 ثانیه بعد
+setTimeout(() => {
     if(infoBox) {
-      infoBox.style.transition = 'opacity 0.5s';
-      infoBox.style.opacity = '0';
-      setTimeout(() => infoBox.remove(), 500);
+        infoBox.style.transition = 'opacity 0.5s';
+        infoBox.style.opacity = '0';
+        setTimeout(() => infoBox.remove(), 500);
     }
-  }, 5000);
+}, 5000);
 
 /* ============================= */
-/*        بارگذاری اولیه         */
+/*       بارگذاری اولیه          */
 /* ============================= */
 populateSurahSelect();
 loadAyah();
