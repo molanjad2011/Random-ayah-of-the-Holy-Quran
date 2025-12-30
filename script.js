@@ -165,7 +165,24 @@ function autoDarkMode() {
 }
 autoDarkMode();
 setInterval(autoDarkMode, 60000);
+  const infoBox = document.getElementById('info-box');
+  const closeBtn = document.getElementById('close-info');
 
+  // بسته شدن با دکمه
+  closeBtn.addEventListener('click', () => {
+    infoBox.style.transition = 'opacity 0.5s';
+    infoBox.style.opacity = '0';
+    setTimeout(() => infoBox.remove(), 500);
+  });
+
+  // نمایش خودکار 5 ثانیه بعد
+  setTimeout(() => {
+    if(infoBox) {
+      infoBox.style.transition = 'opacity 0.5s';
+      infoBox.style.opacity = '0';
+      setTimeout(() => infoBox.remove(), 500);
+    }
+  }, 5000);
 /* ============================= */
 /*        بارگذاری اولیه         */
 /* ============================= */

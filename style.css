@@ -225,19 +225,26 @@ label {
     #button-container button { font-size: 0.9rem; padding: 8px 15px; }
 }
 .info-box {
-    width: 90%;
-    max-width: 700px;
-    margin: 15px auto;
-    padding: 14px 18px;
-    background: #fff3cd;
-    color: #856404;
-    border-left: 5px solid #ffeeba;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    backdrop-filter: blur(4px);
+  position: relative;
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 15px 50px 15px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 body.dark-mode .info-box {
     background: rgba(255, 223, 128, 0.2);
     color: #fff0b3;
