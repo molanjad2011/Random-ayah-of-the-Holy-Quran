@@ -11,8 +11,11 @@
 
 <h1>قرآن کریم</h1>
 <div id="ayah-container">در حال بارگذاری...</div>
-<button id="next-btn">آیه بعدی</button>
-<button id="favorite-btn">افزودن به علاقه‌مندی‌ها</button>
+<div id="button-container">
+    <button id="next-btn">آیه بعدی</button>
+    <button id="favorite-btn">افزودن به علاقه‌مندی‌ها</button>
+    <button id="share-btn">اشتراک‌گذاری</button>
+</div>
 
 <h2>علاقه‌مندی‌ها:</h2>
 <div id="favorites"></div>
@@ -95,6 +98,21 @@ nextBtn.addEventListener("click", loadAyah);
 favoriteBtn.addEventListener("click", addToFavorites);
 
 loadAyah();
+const shareBtn = document.getElementById("share-btn");
+
+shareBtn.addEventListener("click", () => {
+    if (!currentAyah) return alert("آیه‌ای برای اشتراک‌گذاری موجود نیست!");
+
+    const textToShare = `${currentAyah.text}\n\nسوره: ${currentAyah.surah}، آیه: ${currentAyah.number}`;
+
+    // کپی به Clipboard
+    navigator.clipboard.writeText(textToShare).then(() => {
+        alert("آیه کپی شد! می‌توانید در شبکه‌های اجتماعی به اشتراک بگذارید.");
+    }).catch(err => {
+        alert("مشکلی در کپی کردن آیه رخ داد: " + err);
+    });
+});
+
 </script>
 
 </body>
